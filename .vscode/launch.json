@@ -8,9 +8,9 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
-            "gdbPath": "${env:GNURISCV_TOOLCHAIN_PATH}/bin/riscv32-unknown-elf-gdb",
+            "serverPath": "${env:OPENOCD_PATH}/bin/openocd.exe",
+            "gdbPath": "${env:GNURISCV_TOOLCHAIN_PATH}/bin/riscv32-unknown-elf-gdb.exe",
             "device": "HPM6750xVMx",
-            // "svdFile": "${workspaceFolder}/vendor_sdk/soc/HPM6700/HPM6750/HPM6750_svd.svd",
             "searchDir": [
                 "${workspaceFolder}/openocd"
             ],
@@ -21,7 +21,8 @@
             ],
             "interface": "jtag",
             "runToEntryPoint": "main",
-            "showDevDebugOutput": "none",
+            "showDevDebugOutput": "raw",
+            "killOpenOCDOnStop": true
         },
         {
             "name": "6e00dap_debug",
@@ -30,9 +31,9 @@
             "request": "launch",
             "type": "cortex-debug",
             "servertype": "openocd",
-            "gdbPath": "${env:GNURISCV_TOOLCHAIN_PATH}/bin/riscv32-unknown-elf-gdb",
+            "serverPath": "${env:OPENOCD_PATH}/bin/openocd.exe",
+            "gdbPath": "${env:GNURISCV_TOOLCHAIN_PATH}/bin/riscv32-unknown-elf-gdb.exe",
             "device": "HPM6E00xVMx",
-            // "svdFile": "${workspaceFolder}/vendor_sdk/soc/HPM6E00/HPM6E80/HPM6E80_svd.svd",
             "searchDir": [
                 "${workspaceFolder}/openocd"
             ],
@@ -43,21 +44,21 @@
             ],
             "interface": "jtag",
             "runToEntryPoint": "main",
-            "showDevDebugOutput": "none",
+            "showDevDebugOutput": "raw",
+            "killOpenOCDOnStop": true
         },
         {
+            "name": "jlink_debug",
             "cwd": "${workspaceFolder}",
             "executable": "${workspaceFolder}/build/output/demo.elf",
-            "name": "jlink_debug",
             "request": "launch",
             "type": "cortex-debug",
+            "servertype": "jlink",
+            "gdbPath": "${env:GNURISCV_TOOLCHAIN_PATH}/bin/riscv32-unknown-elf-gdb.exe",
             "device": "HPM6750xVMx",
             "runToEntryPoint": "main",
-            "showDevDebugOutput": "none",
-            "interface": "jtag",
-            "servertype": "jlink",
-            //"svdFile": "${workspaceFolder}/vendor_sdk/soc/HPM6700/HPM6750/HPM6750_svd.svd"
+            "showDevDebugOutput": "raw",
+            "interface": "jtag"
         }
-        
     ]
 }

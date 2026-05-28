@@ -131,10 +131,9 @@ target_link_libraries(${APP_NAME}.elf PRIVATE
     "-Wl,--print-memory-usage"
     "-Wl,-Map=${EXECUTABLE_OUTPUT_PATH}/${APP_MAP_NAME}"
     "-Wl,--whole-archive"
-    # 保持和源码仓库一致的顺序，让数学库与预编译 SDK 一起处于整库保留区间。
-    "-lm"
     vendor_sdk::vendor_sdk
     "-Wl,--no-whole-archive"
+    "-lm"
 )
 
 # 根据 SOC 型号选择链接脚本

@@ -11,8 +11,8 @@ HMI/temp
 *.bak
 *.pyc
 c_cpp_properties.json
-.claude/
-*settings*.json
+.claude
+settings.local.json
 nul
 .clangd
 .vscode/settings.json

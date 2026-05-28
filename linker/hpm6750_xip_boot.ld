@@ -14,12 +14,11 @@ MEMORY
 {
     XPI0 (rx) : ORIGIN = 0x80000000 + BOOT_USER_OFFSET, LENGTH = 1792K
     ILM (wx) : ORIGIN = 0x00000000, LENGTH = 256K
-    DLM (w) : ORIGIN = 0x00080000, LENGTH = 256K
-    AXI_SRAM (wx) : ORIGIN = 0x01080000, LENGTH = 1280K   /* AXI SRAM0 */
-    NONCACHEABLE_RAM (wx) : ORIGIN = 0x011C0000, LENGTH = 256K    /* AXI SRAM1 */
+    DLM (w) : ORIGIN = 0x00200000, LENGTH = 256K
+    AXI_SRAM (wx) : ORIGIN = 0x01200000, LENGTH = 1280K   /* AXI SRAM0 */
+    NONCACHEABLE_RAM (wx) : ORIGIN = 0x01340000, LENGTH = 256K    /* AXI SRAM1 */
     SHARE_RAM (w) : ORIGIN = 0x48000000, LENGTH = 1M
     AHB_SRAM (w) : ORIGIN = 0xF0300000, LENGTH = 32k
-    APB_SRAM (w): ORIGIN = 0xF40F0000, LENGTH = 8k
 }
 
 SECTIONS
@@ -286,7 +285,7 @@ SECTIONS
     .apb_sram (NOLOAD) : {
         KEEP(*(.backup_sram))
         KEEP(*(.backup_sram.*))
-    } > APB_SRAM
+    } > AHB_SRAM
 
     .fast_ram (NOLOAD) : {
         . = ALIGN(8);
